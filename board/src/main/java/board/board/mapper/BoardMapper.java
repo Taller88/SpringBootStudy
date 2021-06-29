@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import board.board.dto.BoardDto;
+import board.board.dto.BoardFileDto;
 
 @Mapper
 public interface BoardMapper {
@@ -21,4 +22,5 @@ public interface BoardMapper {
 
 	void deleteBoard(int board) throws Exception;
 
+	void insertBoardFileList(List<BoardFileDto> list) throws Exception;
 }

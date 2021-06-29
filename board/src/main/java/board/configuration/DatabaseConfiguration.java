@@ -33,12 +33,6 @@ public class DatabaseConfiguration {
 		return new HikariConfig();
 	}
 	
-	
-	@Bean
-	public PlatformTransactionManager transactionManager() throws Exception{
-		return new DataSourceTransactionManager(dataSource());
-	}
-	
 	@Bean
 	@ConfigurationProperties(prefix="mybatis.configuration")
 	public org.apache.ibatis.session.Configuration mybatisConfig(){
@@ -64,5 +58,11 @@ public class DatabaseConfiguration {
 	@Bean
 	public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory){
 		return new SqlSessionTemplate(sqlSessionFactory);
+	}
+	
+	
+	@Bean
+	public PlatformTransactionManager transactionManager() throws Exception{
+		return new DataSourceTransactionManager(dataSource());
 	}
 }
