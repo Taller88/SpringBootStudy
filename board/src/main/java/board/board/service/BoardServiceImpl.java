@@ -48,6 +48,8 @@ public class BoardServiceImpl implements BoardService {
 	public BoardDto selectBoardDetail(int boardIdx)  throws Exception{
 		boardMapper.updateHitCount(boardIdx);
 		BoardDto board = boardMapper.selectBoardDetail(boardIdx);
+		List<BoardFileDto> fileList = boardMapper.selectBoardFileList(boardIdx);
+		board.setFileList(fileList);
 		
 		return board;
 	}
@@ -60,6 +62,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void deleteBoard(int board) throws Exception {
 		boardMapper.deleteBoard(board);
+	}
+
+	@Override
+	public BoardFileDto selectBoardFileInformation(int idx, int boardIdx) throws Exception {
+		// TODO Auto-generated method stub
+		return boardMapper.selectBoardFileInformation(idx, boardIdx);
 	}
 
 	
